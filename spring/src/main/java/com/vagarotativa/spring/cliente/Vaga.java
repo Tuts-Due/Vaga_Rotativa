@@ -2,12 +2,20 @@ package com.vagarotativa.spring.cliente;
 
 import java.util.Objects;
 
-public class Rotativo {
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+public class Vaga {
     private Integer id;
     private Integer entrada;
     private Integer saida;
 
-    public Rotativo(Integer id, Integer entrada, Integer saida) {
+    @ManyToOne
+    @JoinColumn(name ="placa_id")
+
+    private Vaga rotativo;
+    
+    public Vaga(Integer id, Integer entrada, Integer saida) {
         this.id = id;
         this.entrada = entrada;
         this.saida = saida;
@@ -41,7 +49,7 @@ public class Rotativo {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        Rotativo rotativo = (Rotativo) object;
+        Vaga rotativo = (Vaga) object;
         return java.util.Objects.equals(id, rotativo.id);
     }
 

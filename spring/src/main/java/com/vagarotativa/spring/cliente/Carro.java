@@ -1,22 +1,39 @@
 package com.vagarotativa.spring.cliente;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Carro {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class Carro implements Serializable{
     
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id;
     private String fabricante;
     private String modelo;
     private String placa;
     private String cor;
+    
+    @ManyToOne
+    @JoinColumn(name ="pessoa_id")
 
-    private clienteDono pessoa;
+    private ClienteDono pessoa;
 
     public Carro() {
     super();
     }
-
-    public Carro(Integer id, String fabricante, String modelo, String placa, String cor, clienteDono pessoa) {
+    
+    public Carro(Integer id, String fabricante, String modelo, String placa, String cor, ClienteDono pessoa) {
         this.id = id;
         this.fabricante = fabricante;
         this.modelo = modelo;
@@ -65,11 +82,11 @@ public class Carro {
         this.cor = cor;
     }
 
-    public clienteDono getPessoa() {
+    public ClienteDono getPessoa() {
         return pessoa;
     }
 
-    public void setPessoa(clienteDono pessoa) {
+    public void setPessoa(ClienteDono pessoa) {
         this.pessoa = pessoa;
     }
 

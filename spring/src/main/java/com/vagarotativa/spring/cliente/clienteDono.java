@@ -9,11 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
     @Entity
-    public class clienteDono implements Serializable {
+    public class ClienteDono implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -23,16 +22,15 @@ import javax.persistence.ManyToOne;
     private String nome;
     private Integer numeroTelefone;
 
-    @ManyToOne
-    @JoinColumn(name="categoria_id")
+    @OneToMany(mappedBy = "pessoa")
     
     private List<Carro> carros = new ArrayList<>();
 
-    public clienteDono() {
+    public ClienteDono() {
         super();
     }
 
-    public clienteDono(Integer id, String nome, Integer numeroTelefone) {
+    public ClienteDono(Integer id, String nome, Integer numeroTelefone) {
         this.id = id;
         this.nome = nome;
         this.numeroTelefone = numeroTelefone;
@@ -74,7 +72,7 @@ import javax.persistence.ManyToOne;
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        clienteDono that = (clienteDono) object;
+        ClienteDono that = (ClienteDono) object;
         return java.util.Objects.equals(id, that.id);
     }
 
