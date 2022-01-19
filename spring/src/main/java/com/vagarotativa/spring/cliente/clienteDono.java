@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class clienteDono {
-
+    private Integer id;
     private String nome;
     private Integer numeroTelefone;
 
@@ -15,9 +15,18 @@ public class clienteDono {
         super();
     }
 
-    public clienteDono(String nome, Integer numeroTelefone) {
+    public clienteDono(Integer id, String nome, Integer numeroTelefone) {
+        this.id = id;
         this.nome = nome;
         this.numeroTelefone = numeroTelefone;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -49,10 +58,10 @@ public class clienteDono {
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
         clienteDono that = (clienteDono) object;
-        return java.util.Objects.equals(nome, that.nome) && java.util.Objects.equals(numeroTelefone, that.numeroTelefone) && java.util.Objects.equals(carros, that.carros);
+        return java.util.Objects.equals(id, that.id);
     }
 
     public int hashCode() {
-        return Objects.hash(super.hashCode(), nome, numeroTelefone, carros);
+        return Objects.hash(super.hashCode(), id);
     }
 }

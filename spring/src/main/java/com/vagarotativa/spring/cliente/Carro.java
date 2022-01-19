@@ -3,7 +3,8 @@ package com.vagarotativa.spring.cliente;
 import java.util.Objects;
 
 public class Carro {
-
+    
+    private Integer id;
     private String fabricante;
     private String modelo;
     private String placa;
@@ -15,13 +16,21 @@ public class Carro {
     super();
     }
 
-    public Carro(String fabricante, String modelo, String placa, String cor, clienteDono pessoa) {
+    public Carro(Integer id, String fabricante, String modelo, String placa, String cor, clienteDono pessoa) {
+        this.id = id;
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.placa = placa;
         this.cor = cor;
         this.pessoa = pessoa;
-        
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFabricante() {
@@ -56,15 +65,23 @@ public class Carro {
         this.cor = cor;
     }
 
+    public clienteDono getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(clienteDono pessoa) {
+        this.pessoa = pessoa;
+    }
+
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
         Carro carro = (Carro) object;
-        return fabricante.equals(carro.fabricante) && modelo.equals(carro.modelo) && placa.equals(carro.placa) && cor.equals(carro.cor) && pessoa.equals(carro.pessoa);
+        return java.util.Objects.equals(id, carro.id);
     }
 
     public int hashCode() {
-        return Objects.hash(super.hashCode(), fabricante, modelo, placa, cor);
+        return Objects.hash(super.hashCode(), id);
     }
 }
