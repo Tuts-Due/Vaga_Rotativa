@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
     @Entity
-    public class ClienteDono implements Serializable {
+    public class Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -26,11 +26,11 @@ import javax.persistence.OneToMany;
     
     private List<Carro> carros = new ArrayList<>();
 
-    public ClienteDono() {
+    public Pessoa() {
         super();
     }
 
-    public ClienteDono(Integer id, String nome, Integer numeroTelefone) {
+    public Pessoa(Integer id, String nome, Integer numeroTelefone) {
         this.id = id;
         this.nome = nome;
         this.numeroTelefone = numeroTelefone;
@@ -72,7 +72,7 @@ import javax.persistence.OneToMany;
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        ClienteDono that = (ClienteDono) object;
+        Pessoa that = (Pessoa) object;
         return java.util.Objects.equals(id, that.id);
     }
 

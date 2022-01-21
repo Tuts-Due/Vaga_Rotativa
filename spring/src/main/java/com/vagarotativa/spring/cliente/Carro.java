@@ -27,13 +27,13 @@ public class Carro implements Serializable{
     @ManyToOne
     @JoinColumn(name ="pessoa_id")
 
-    private ClienteDono pessoa;
+    private Pessoa pessoa;
 
     public Carro() {
     super();
     }
     
-    public Carro(Integer id, String fabricante, String modelo, String placa, String cor, ClienteDono pessoa) {
+    public Carro(Integer id, String fabricante, String modelo, String placa, String cor, Pessoa pessoa) {
         this.id = id;
         this.fabricante = fabricante;
         this.modelo = modelo;
@@ -82,11 +82,11 @@ public class Carro implements Serializable{
         this.cor = cor;
     }
 
-    public ClienteDono getPessoa() {
+    public Pessoa getPessoa() {
         return pessoa;
     }
 
-    public void setPessoa(ClienteDono pessoa) {
+    public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
     }
 
