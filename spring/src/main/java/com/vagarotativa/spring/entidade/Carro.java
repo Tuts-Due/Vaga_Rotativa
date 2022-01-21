@@ -1,8 +1,6 @@
-package com.vagarotativa.spring.cliente;
+package com.vagarotativa.spring.entidade;
 
-import java.io.Serializable;
-import java.util.Objects;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,21 +9,27 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Carro implements Serializable{
+public class Carro {
     
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
+    @Column
     private Integer id;
+    @Column
     private String fabricante;
+    @Column
     private String modelo;
+
+    @Column(unique = true)
     private String placa;
+    
+    @Column
     private String cor;
     
     @ManyToOne
-    @JoinColumn(name ="pessoa_id")
+    @JoinColumn(name ="id")
 
     private Pessoa pessoa;
 
@@ -90,15 +94,4 @@ public class Carro implements Serializable{
         this.pessoa = pessoa;
     }
 
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        Carro carro = (Carro) object;
-        return java.util.Objects.equals(id, carro.id);
-    }
-
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), id);
-    }
 }

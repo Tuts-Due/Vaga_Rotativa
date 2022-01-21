@@ -1,11 +1,13 @@
-package com.vagarotativa.spring.cliente;
+package com.vagarotativa.spring.entidade;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,14 +18,14 @@ import javax.persistence.OneToMany;
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  
     private Integer id;
+    @Column
     private String nome;
+    @Column
     private Integer numeroTelefone;
 
-    @OneToMany(mappedBy = "pessoa")
-    
+    @OneToMany(targetEntity = Carro.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Carro> carros = new ArrayList<>();
 
     public Pessoa() {
@@ -68,15 +70,4 @@ import javax.persistence.OneToMany;
         this.carros = carros;
     }
 
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        Pessoa that = (Pessoa) object;
-        return java.util.Objects.equals(id, that.id);
-    }
-
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), id);
-    }
 }
