@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 
     @Repository
-    public interface CarroRepository extends JpaRepository<Carro,Integer>{
+    public interface CarroRepository extends JpaRepository<Carro,String>{
         Carro findByPlaca(@Param("placa") String placa);
 }

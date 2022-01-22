@@ -22,19 +22,19 @@ public class VagaController {
     @Autowired
     private VagaRepository vagaRepository;
 
-    @RequestMapping(value = "placa/{idPlaca}", method= RequestMethod.GET, produces="application/json", consumes = "application/json")
-    public ResponseEntity<List<Vaga>> buscaVagaPeloNumeroTelefoneEntity(@PathVariable("idPlaca") Integer idPlaca){
-        List<Vaga> vaga = vagaRepository.findAllByIdPlaca(idPlaca);
+    @RequestMapping(value = "placa/{placa}", method= RequestMethod.GET, produces="application/json", consumes = "application/json")
+    public ResponseEntity<List<Vaga>> buscaVagaPelaPlacaEntity(@PathVariable("placa") String placa){
+        List<Vaga> vaga = vagaRepository.findAllByPlaca(placa);
         return new ResponseEntity<>(vaga,HttpStatus.OK);
     }
     @PostMapping("/salvar")
-    public void CadastraPessoa(@RequestBody Vaga vaga){
+        public void CadastraPessoa(@RequestBody Vaga vaga){
         vagaRepository.save(vaga);
     }
 
-    @RequestMapping(value = "/find/{idVaga}",method = RequestMethod.GET, produces = "application/json", consumes = "application/json")
-    public ResponseEntity<Vaga> buscaVaga(@PathVariable("idVaga") Integer idVaga){
-        Vaga vaga = vagaRepository.getById(idVaga);
+    @RequestMapping(value = "/find/{vaga}",method = RequestMethod.GET, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<Vaga> buscaVaga(@PathVariable("vaga") Integer idVaga){
+        Vaga vaga = vagaRepository.getByVaga(idVaga); 
         return new ResponseEntity<>(vaga,HttpStatus.OK);
 
     }

@@ -9,5 +9,9 @@ import org.springframework.stereotype.Repository;
 @Repository
     public interface VagaRepository extends JpaRepository<Vaga,Integer>{
 
-    List<Vaga> findAllByIdPlaca(Integer idPlaca);
+    Vaga getByVaga(Integer idVaga);
+
+    List<Vaga> findAllByPlaca(String placa);
+
+
 }
