@@ -25,7 +25,7 @@ import javax.persistence.OneToMany;
     @Column
     private Integer numeroTelefone;
 
-    @OneToMany(targetEntity = Carro.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+   @OneToMany(targetEntity = Carro.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Carro> carros = new ArrayList<>();
 
     public Pessoa() {

@@ -14,9 +14,8 @@ public class Carro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    @Column
     private Integer id;
+    
     @Column
     private String fabricante;
     @Column
@@ -29,8 +28,7 @@ public class Carro {
     private String cor;
     
     @ManyToOne
-    @JoinColumn(name ="id")
-
+   @JoinColumn(name ="numeroTelefone")
     private Pessoa pessoa;
 
     public Carro() {

@@ -22,9 +22,9 @@ public class VagaController {
     @Autowired
     private VagaRepository vagaRepository;
 
-    @RequestMapping(value = "placa/{placa}", method= RequestMethod.GET, produces="application/json", consumes = "application/json")
+   @RequestMapping(value = "placa/{placa}", method= RequestMethod.GET, produces="application/json", consumes = "application/json")
     public ResponseEntity<List<Vaga>> buscaVagaPelaPlacaEntity(@PathVariable("placa") String placa){
-        List<Vaga> vaga = vagaRepository.findAllByPlaca(placa);
+        List<Vaga> vaga = vagaRepository.findByPlaca(placa);
         return new ResponseEntity<>(vaga,HttpStatus.OK);
     }
     @PostMapping("/salvar")
@@ -33,8 +33,8 @@ public class VagaController {
     }
 
     @RequestMapping(value = "/find/{vaga}",method = RequestMethod.GET, produces = "application/json", consumes = "application/json")
-    public ResponseEntity<Vaga> buscaVaga(@PathVariable("vaga") Integer idVaga){
-        Vaga vaga = vagaRepository.getByVaga(idVaga); 
+    public ResponseEntity<Vaga> buscaVaga(@PathVariable("Vaga") Integer Vaga){
+        Vaga vaga = vagaRepository.findByVaga(Vaga); 
         return new ResponseEntity<>(vaga,HttpStatus.OK);
 
     }
