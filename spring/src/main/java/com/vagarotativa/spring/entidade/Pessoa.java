@@ -19,11 +19,11 @@ import javax.persistence.OneToMany;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)  
-    private Integer id;
+    private Long id;
     @Column
     private String nome;
     @Column
-    private Integer numeroTelefone;
+    private Long numeroTelefone;
 
    @OneToMany(targetEntity = Carro.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Carro> carros = new ArrayList<>();
@@ -32,17 +32,17 @@ import javax.persistence.OneToMany;
         super();
     }
 
-    public Pessoa(Integer id, String nome, Integer numeroTelefone) {
+    public Pessoa(Long id, String nome, Long numeroTelefone) {
         this.id = id;
         this.nome = nome;
         this.numeroTelefone = numeroTelefone;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -54,11 +54,11 @@ import javax.persistence.OneToMany;
         this.nome = nome;
     }
 
-    public Integer getNumeroTelefone() {
+    public Long getNumeroTelefone() {
         return numeroTelefone;
     }
 
-    public void setNumeroTelefone(Integer numeroTelefone) {
+    public void setNumeroTelefone(Long numeroTelefone) {
         this.numeroTelefone = numeroTelefone;
     }
 

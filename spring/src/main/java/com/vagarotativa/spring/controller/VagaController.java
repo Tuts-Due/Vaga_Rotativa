@@ -1,42 +1,40 @@
 package com.vagarotativa.spring.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.vagarotativa.spring.entidade.Vaga;
+import com.vagarotativa.spring.enuns.StatusVaga;
 import com.vagarotativa.spring.repository.VagaRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.AllArgsConstructor;
+
 @RestController
-@RequestMapping("/vaga")
+@AllArgsConstructor
 public class VagaController {
-    
-    @Autowired
+
     private VagaRepository vagaRepository;
-
-   @RequestMapping(value = "placa/{placa}", method= RequestMethod.GET, produces="application/json", consumes = "application/json")
-    public ResponseEntity<List<Vaga>> buscaVagaPelaPlacaEntity(@PathVariable("placa") String placa){
-        List<Vaga> vaga = vagaRepository.findByPlaca(placa);
-        return new ResponseEntity<>(vaga,HttpStatus.OK);
+    
+    @GetMapping("/vaga")
+    public List<Vaga> getAllCarros(){
+        return VagaRepository.findALL();
     }
-    @PostMapping("/salvar")
-        public void CadastraPessoa(@RequestBody Vaga vaga){
-        vagaRepository.save(vaga);
+  
+    @GetMapping("/vaga/{id}")
+    public Optional<Vaga> getVagaByStatus(@PathVariable StatusVaga statusVaga){
+        return VagaRepository.findByAll(statusVaga);
+       
+    }
+    @PostMapping("/vaga")
+	public void cadastraCarro(@RequestBody Vaga Vaga) {
+		this.vagaRepository.save(Vaga);
     }
 
-    @RequestMapping(value = "/find/{vaga}",method = RequestMethod.GET, produces = "application/json", consumes = "application/json")
-    public ResponseEntity<Vaga> buscaVaga(@PathVariable("Vaga") Integer Vaga){
-        Vaga vaga = vagaRepository.findByVaga(Vaga); 
-        return new ResponseEntity<>(vaga,HttpStatus.OK);
-
-    }
 
 }

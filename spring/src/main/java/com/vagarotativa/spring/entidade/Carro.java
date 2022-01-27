@@ -14,7 +14,7 @@ public class Carro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     
     @Column
     private String fabricante;
@@ -35,7 +35,7 @@ public class Carro {
     super();
     }
     
-    public Carro(Integer id, String fabricante, String modelo, String placa, String cor, Pessoa pessoa) {
+    public Carro(Long id, String fabricante, String modelo, String placa, String cor, Pessoa pessoa) {
         this.id = id;
         this.fabricante = fabricante;
         this.modelo = modelo;
@@ -44,11 +44,11 @@ public class Carro {
         this.pessoa = pessoa;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

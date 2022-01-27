@@ -19,7 +19,7 @@ public class Vaga {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column
     private Date entrada;
@@ -36,7 +36,7 @@ public class Vaga {
     @JoinColumn(name ="placa")
     private Carro carro;
     
-    public Vaga(Integer id, Date entrada, Date saida,StatusVaga statusVaga) {
+    public Vaga(Long id, Date entrada, Date saida,StatusVaga statusVaga) {
         this.id = id;
         this.entrada = entrada;
         this.saida = saida;
@@ -44,11 +44,11 @@ public class Vaga {
     }
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
